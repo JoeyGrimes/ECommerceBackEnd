@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountInput;
-import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountOutput;
-import com.bookshop.springbootrestdatabookshopmaven.models.InputToCart;
-import com.bookshop.springbootrestdatabookshopmaven.models.LoginInput;
-import com.bookshop.springbootrestdatabookshopmaven.models.LoginOutput;
-import com.bookshop.springbootrestdatabookshopmaven.models.ViewAccountInput;
+import com.bookshop.springbootrestdatabookshopmaven.model.CreateAccountInput;
+import com.bookshop.springbootrestdatabookshopmaven.model.CreateAccountOutput;
+import com.bookshop.springbootrestdatabookshopmaven.model.InputToCart;
+import com.bookshop.springbootrestdatabookshopmaven.model.LoginInput;
+import com.bookshop.springbootrestdatabookshopmaven.model.LoginOutput;
+import com.bookshop.springbootrestdatabookshopmaven.model.ViewAccountInput;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.CartPojo;
