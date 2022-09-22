@@ -45,10 +45,9 @@ public class CartServiceImpl implements CartService {
 		CartPojo cartpojo = new CartPojo();
 		BookPojo currentbook = new BookPojo();
 		BeanUtils.copyProperties(book, currentbook);
-		Optional<AccountEntity> account = Optional.ofNullable(accountDao.findByAccountId(accountId));
+		AccountEntity account = accountDao.findByAccountId(accountId);
 		AccountPojo accountPojo = new AccountPojo();
-		if(account.isPresent()) {
-			BeanUtils.copyProperties(account.get(), accountPojo);
+			BeanUtils.copyProperties(account , accountPojo);
 			cartpojo.setBookId(currentbook.getBookId());
 			cartpojo.setBookTitle(currentbook.getBookTitle());
 			cartpojo.setCost(currentbook.getCost());
@@ -58,13 +57,13 @@ public class CartServiceImpl implements CartService {
 			BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
 			cartDao.saveAndFlush(newCartEntity); // save the entity object in the db
 													// this will return the autogenretaed primary key
-
+			return cartpojo;
 		}
-		return cartpojo;
+		
 		
 		
 	
-	}
+	
 
 	@Override
 	public void removeFromCart(int bookId, int accountId) {

@@ -6,7 +6,7 @@ CREATE TABLE customer_accounts (accountID INT NOT NULL PRIMARY KEY GENERATED ALW
 
 CREATE TABLE book (bookId INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, bookTitle VARCHAR(100) UNIQUE, bookAuthor VARCHAR(100), cost INT NOT NULL UNIQUE, bookImageUrl VARCHAR(255));
 
-CREATE TABLE current_cart (accountID INT, cost INT NOT NULL UNIQUE, quantity INT NOT NULL, bookTitle VARCHAR(100) UNIQUE, bookId INT NOT NULL, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID), CONSTRAINT fk_bookid FOREIGN KEY(bookId) REFERENCES book(bookId), CONSTRAINT fk_cost FOREIGN KEY(cost) REFERENCES book(cost), CONSTRAINT fk_bookTitle FOREIGN KEY(bookTitle) REFERENCES book(bookTitle));
+CREATE TABLE current_cart (accountID INT, cost INT NOT NULL UNIQUE, quantity INT NOT NULL, bookTitle VARCHAR(100) UNIQUE, bookId INT NOT NULL, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID), CONSTRAINT fk_bookid FOREIGN KEY(bookId) REFERENCES book(bookId));
 
 CREATE TABLE transactionhistory (orderNo INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, accountID INT, book VARCHAR(100), bookId INT NOT NULL, cost INT NOT NULL, quantity INT NOT NULL, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID));
 

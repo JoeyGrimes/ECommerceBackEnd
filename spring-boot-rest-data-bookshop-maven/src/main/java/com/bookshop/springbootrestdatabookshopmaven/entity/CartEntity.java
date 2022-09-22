@@ -43,15 +43,4 @@ public class CartEntity {
 	private int bookId;
 	
 	
-//	@ManyToOne
-//	@JoinColumn(name ="accountid")
-//	private AccountEntity accountentity;
-//	
-//	@ManyToOne
-//	@JoinColumn(name ="bookId")
-//	@JoinColumn(name ="bookTitle")
-//	@JoinColumn(name = "cost")
-//	private BookEntity bookentity;
-
-	
 }
