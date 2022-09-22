@@ -48,7 +48,6 @@ public class MasterController {
 	TransactionHistoryService transactionHistoryService;
 	
 	
-
 	// Read -getAllBooks - @GetMapping
 	// http://localhost:6666/api/books - get
 	@GetMapping("/books")

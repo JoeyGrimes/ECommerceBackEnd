@@ -18,7 +18,6 @@ public class TransactionHistoryEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Id is the primary auto generated key
-	
 	@Column(name = "orderno")
 	private int orderNo;
 	

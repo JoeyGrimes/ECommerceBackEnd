@@ -27,6 +27,9 @@ public class CartEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Id is the primary auto generated key
+	@Column(name ="orderno")
+	private int orderno;
+	
 	@Column(name = "accountid")
 	private int accountId;
 

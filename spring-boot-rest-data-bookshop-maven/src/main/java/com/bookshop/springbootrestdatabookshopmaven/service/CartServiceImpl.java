@@ -45,13 +45,13 @@ public class CartServiceImpl implements CartService {
 		CartPojo cartpojo = new CartPojo();
 		BookPojo currentbook = new BookPojo();
 		BeanUtils.copyProperties(book, currentbook);
-		AccountEntity account = accountDao.findByAccountId(accountId);
-		AccountPojo accountPojo = new AccountPojo();
-			BeanUtils.copyProperties(account , accountPojo);
+		//AccountEntity account = accountDao.findByAccountId(accountId);
+		//AccountPojo copiedAccount = new AccountPojo();
+			//BeanUtils.copyProperties(account, copiedAccount);
 			cartpojo.setBookId(currentbook.getBookId());
 			cartpojo.setBookTitle(currentbook.getBookTitle());
 			cartpojo.setCost(currentbook.getCost());
-			cartpojo.setAccountId(accountPojo.getAccountId());
+			cartpojo.setAccountId(accountId);
 			cartpojo.setQuantity(quantity);
 			CartEntity newCartEntity = new CartEntity();
 			BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
@@ -89,7 +89,7 @@ public class CartServiceImpl implements CartService {
 		List<CartEntity> allCartEntity = cartDao.findAllByAccountId(accountId);
 		List<CartPojo> allCartItems = new ArrayList<CartPojo>();
 		
-		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
+		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getOrderno(),eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
 	
 		return allCartItems;
 	}

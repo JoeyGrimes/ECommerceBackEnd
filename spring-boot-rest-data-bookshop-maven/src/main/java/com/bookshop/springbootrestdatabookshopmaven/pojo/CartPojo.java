@@ -17,6 +17,9 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class CartPojo {
+	
+	private int orderNo;
+	
 	private int accountId;
 	@NotNull
 	private int cost;
