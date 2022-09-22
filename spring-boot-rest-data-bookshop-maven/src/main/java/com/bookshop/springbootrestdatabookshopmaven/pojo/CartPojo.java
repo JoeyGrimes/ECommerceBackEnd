@@ -1,4 +1,4 @@
-package com.bookshop.springbootrestdatabookshopmaven.pojo;
+	package com.bookshop.springbootrestdatabookshopmaven.pojo;
 
 import javax.validation.constraints.NotNull;
 
@@ -29,6 +29,7 @@ public class CartPojo {
 	@NotNull
 	private String date;
 	
-
+	private AccountPojo accountpojo;
+	private BookPojo bookpojo;
 	
 }

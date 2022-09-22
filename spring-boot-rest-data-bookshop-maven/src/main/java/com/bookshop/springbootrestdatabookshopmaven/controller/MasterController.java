@@ -16,9 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
+import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 import com.bookshop.springbootrestdatabookshopmaven.service.AccountService;
 import com.bookshop.springbootrestdatabookshopmaven.service.BookService;
+import com.bookshop.springbootrestdatabookshopmaven.service.CartService;
+import com.bookshop.springbootrestdatabookshopmaven.service.TransactionHistoryService;
 
+import models.CreateAccountInput;
+import models.CreateAccountOutput;
 import models.LoginInput;
 import models.LoginOutput;
 import models.ViewAccountInput;
@@ -35,6 +40,10 @@ public class MasterController {
 	BookService bookService;
 	@Autowired
 	AccountService accountService;
+	@Autowired 
+	CartService cartService;
+	@Autowired
+	TransactionHistoryService transactionHistoryService;
 	
 	
 
@@ -54,36 +63,47 @@ public class MasterController {
 	// http://localhost:6666/api/books/14
 	// ^ bookId
 
+	
+	//works
 	@PostMapping("/viewaccount")
 	public AccountPojo viewAccount (@Valid @RequestBody ViewAccountInput viewaccountinput) {
 		System.out.println(viewaccountinput.getAccountId());
 		return accountService.viewAccount(viewaccountinput.getAccountId());
 		
 	}
-
-	// Create - addBook - PostMapping
-	@PostMapping("")
-	public AccountPojo register(@Valid @RequestBody AccountPojo accountpojo) {
-		return accountService.register(accountpojo);
+	
+	@PostMapping("/transactionhistory")
+	public List<TransactionHistoryPojo> viewTransactionHistory(@Valid @RequestBody ViewAccountInput viewaccountinput){
+		return transactionHistoryService.viewTransactionHistory(viewaccountinput.getAccountId());
+		
 	}
+
+	// --testing
+	@PostMapping("")
+	public AccountPojo registerAccount(@Valid @RequestBody AccountPojo newaccount) {
+		 return accountService.register(newaccount);
+		 
+	}
+	
+	@PostMapping("{/bid}/checkout")
+	public void Checkout() {
+		
+		
+	}
+	
+	//works
 	@PostMapping("/login")
-	public LoginOutput Login(@Valid @RequestBody LoginInput logininput) {
+	public LoginOutput login(@Valid @RequestBody LoginInput logininput) {
 		
 		int accountid = accountService.login(logininput.getEmail(), logininput.getPassword());
 		return new LoginOutput(accountid);
 	}
 
-	// Update - updateBook - PutMapping
-	@PutMapping("")
-	public BookPojo updateBook(@RequestBody BookPojo updatedBook) {
-
-		return bookService.updateBook(updatedBook);
-	}
 	
-	// Delete - deleteBook - DeleteMapping
-	@DeleteMapping("/{bid}")
-	public void deleteBook(@PathVariable("bid") int bookId) {
-		bookService.deleteBook(bookId);
+	// --testing
+	@DeleteMapping("/{bid}/{bid}")
+	public void deleteAccount(@PathVariable("bid") int bookId, @PathVariable("bid")int accountId) {
+		cartService.removeFromCart(bookId, accountId);
 	}
 
 }

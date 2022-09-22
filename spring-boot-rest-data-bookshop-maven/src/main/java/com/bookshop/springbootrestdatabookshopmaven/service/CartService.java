@@ -10,11 +10,11 @@ import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 
 public interface CartService {
 
-public void addToCart(CartPojo cartpojo);
+public void addToCart(CartPojo cartpojo, int accountId);
 	
 	public void removeFromCart( int bookId , int accountId);
 	
-	public void Checkout(int accountId, TransactionHistoryPojo transactionhistorypojo);
+	public void Checkout(int accountId);
 		
 	public List<CartPojo> viewCart(int accountId);
 			

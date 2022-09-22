@@ -28,7 +28,17 @@ public class CartServiceImpl implements CartService {
 	TransactionHistoryDao transactionHistoryDao;
 
 	@Override
-	public void addToCart(CartPojo cartpojo) {
+	public void addToCart(CartPojo cartpojo, int accountId, int bookId) {
+		//need to save the current book selected by ID, this also needs to be passed as paramter
+		//I might be able to do some cheeky logic where I copyproperties of the entities and save and flush
+		
+		
+		
+		//Another solution is the @join column by foreign key in the cart entity. If I can trim the extra unneccessary columns in my findAllBy then save and flush into the cart table
+		//I just need to see a better example she shows
+		
+		
+		
 		CartEntity newCartEntity = new CartEntity();
 		BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
 		cartDao.saveAndFlush(newCartEntity); // save the entity object in the db
@@ -43,24 +53,27 @@ public class CartServiceImpl implements CartService {
 		cartDao.deleteByBookIdAndAccountId(bookId, accountId);
 	}
 
+	
+	//This needs to be edited, I need to insert each individual item on the cart into a LIST. a list of Pojos needs to be pulled,
+	//saved to transaction table, then the cart delete by can be called
 	@Override
-	public void Checkout(int accountId, TransactionHistoryPojo transactionhistorypojo) {
+	public void Checkout(int accountId) {
+		List<CartEntity> FetchedCartItems = cartDao.findAllByAccountId(accountId);
+		List<TransactionHistoryEntity> transactions = new ArrayList<TransactionHistoryEntity>();
+		BeanUtils.copyProperties(FetchedCartItems, transactions);
+		transactionHistoryDao.saveAllAndFlush(transactions);
 		cartDao.deleteByAccountId(accountId);
-		TransactionHistoryEntity transactionHistoryEntity = new TransactionHistoryEntity();
-		BeanUtils.copyProperties(transactionhistorypojo, transactionHistoryEntity);
-		transactionHistoryDao.saveAndFlush(transactionHistoryEntity);
+			
 	}
 
 	@Override
 	public List<CartPojo> viewCart(int accountId) {
-		List<CartEntity> allProductsEntity = cartDao.findAll();
-		List<CartPojo> allCartProducts = new ArrayList<CartPojo>();
-
-		allProductsEntity.forEach((eachEntity) -> allCartProducts
-				.add(new CartPojo(eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(),
-						eachEntity.getBookTitle(), eachEntity.getBookId(), eachEntity.getDate())));
-
-		return allCartProducts;
+		List<CartEntity> allCartEntity = cartDao.findAllByAccountId(accountId);
+		List<CartPojo> allCartItems = new ArrayList<CartPojo>();
+		
+		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId(), eachEntity.getDate())));
+	
+		return allCartItems;
 	}
 
 }

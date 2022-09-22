@@ -1,5 +1,7 @@
 package com.bookshop.springbootrestdatabookshopmaven.service;
 
+import javax.validation.Valid;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
@@ -9,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.bookshop.springbootrestdatabookshopmaven.entity.AccountEntity;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 
+import models.CreateAccountInput;
+import models.CreateAccountOutput;
+
 
 public interface AccountService {
 	
@@ -16,7 +21,8 @@ public interface AccountService {
 	
 	public int login(String email, String password);
 	
-	public AccountPojo register(AccountPojo accountPojo);
+	public AccountPojo register(AccountPojo accountpojo);
+
 	
 	
 		
