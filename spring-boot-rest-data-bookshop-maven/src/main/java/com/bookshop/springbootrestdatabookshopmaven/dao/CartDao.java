@@ -12,6 +12,8 @@ import com.bookshop.springbootrestdatabookshopmaven.entity.CartEntity;
 public interface CartDao extends JpaRepository<CartEntity, Integer> {
 
 	
+	
+	
 	public void deleteByBookIdAndAccountId(int bookId, int accountId);
 
 	public void deleteByAccountId(int accountId);

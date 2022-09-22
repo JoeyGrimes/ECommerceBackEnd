@@ -24,9 +24,8 @@ import org.springframework.stereotype.Service;
 
 import com.bookshop.springbootrestdatabookshopmaven.dao.AccountDao;
 import com.bookshop.springbootrestdatabookshopmaven.entity.AccountEntity;
+import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountOutput;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
-
-import models.CreateAccountOutput;
 
 
 @Service

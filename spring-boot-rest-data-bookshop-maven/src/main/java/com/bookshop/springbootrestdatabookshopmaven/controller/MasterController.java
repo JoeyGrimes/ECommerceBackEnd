@@ -15,19 +15,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountInput;
+import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountOutput;
+import com.bookshop.springbootrestdatabookshopmaven.models.InputToCart;
+import com.bookshop.springbootrestdatabookshopmaven.models.LoginInput;
+import com.bookshop.springbootrestdatabookshopmaven.models.LoginOutput;
+import com.bookshop.springbootrestdatabookshopmaven.models.ViewAccountInput;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
+import com.bookshop.springbootrestdatabookshopmaven.pojo.CartPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 import com.bookshop.springbootrestdatabookshopmaven.service.AccountService;
 import com.bookshop.springbootrestdatabookshopmaven.service.BookService;
 import com.bookshop.springbootrestdatabookshopmaven.service.CartService;
 import com.bookshop.springbootrestdatabookshopmaven.service.TransactionHistoryService;
-
-import models.CreateAccountInput;
-import models.CreateAccountOutput;
-import models.LoginInput;
-import models.LoginOutput;
-import models.ViewAccountInput;
 
 @RestController
 @RequestMapping("api")
@@ -87,11 +88,16 @@ public class MasterController {
 		 
 	}
 	
-//	@PostMapping("{/bid}/checkout")
+//	@PostMapping("{/checkout")
 //	public void Checkout() {
 //		
 		
 //	}
+	
+	@PostMapping("/addToCart")
+	public CartPojo addToCart(@Valid @RequestBody InputToCart inputToCart) {
+		return cartService.addToCart(inputToCart.getAccountId(), inputToCart.getBookId(), inputToCart.getQuantity());
+	}
 	
 	//works
 	@PostMapping("/login")

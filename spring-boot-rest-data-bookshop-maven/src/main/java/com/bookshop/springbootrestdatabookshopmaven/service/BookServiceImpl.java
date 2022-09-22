@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService{
 		List<BookPojo> allBooksPojo = new ArrayList<BookPojo>();
 		
 		allBooksEntity.forEach((eachEntity)->allBooksPojo.add(new BookPojo(eachEntity.getBookId(), eachEntity.getBookTitle(), eachEntity.getBookAuthor(), eachEntity.getCost(), eachEntity.getBookImageUrl())));
-		System.out.println(allBooksPojo);
+		
 		return allBooksPojo;
 	}
 

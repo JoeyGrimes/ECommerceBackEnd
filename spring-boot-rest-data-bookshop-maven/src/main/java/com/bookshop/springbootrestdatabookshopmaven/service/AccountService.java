@@ -9,10 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.bookshop.springbootrestdatabookshopmaven.entity.AccountEntity;
+import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountInput;
+import com.bookshop.springbootrestdatabookshopmaven.models.CreateAccountOutput;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
-
-import models.CreateAccountInput;
-import models.CreateAccountOutput;
 
 
 public interface AccountService {
