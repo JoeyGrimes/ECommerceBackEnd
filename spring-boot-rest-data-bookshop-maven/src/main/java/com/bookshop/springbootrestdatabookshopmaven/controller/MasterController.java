@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,12 +50,13 @@ public class MasterController {
 
 	// Read -getAllBooks - @GetMapping
 	// http://localhost:6666/api/books - get
-	@GetMapping("books")
+	@GetMapping("/books")
 	public List<BookPojo> getAllBooks() {
 		// call the corresponding getAllBooks method of the service layer
 		// for that we need to create an object of the service layer
 		// but with spring framework we can tell the framework to create the object for
 		// us
+
 		return bookService.getAllBooks();
 
 	}
@@ -85,11 +87,11 @@ public class MasterController {
 		 
 	}
 	
-	@PostMapping("{/bid}/checkout")
-	public void Checkout() {
+//	@PostMapping("{/bid}/checkout")
+//	public void Checkout() {
+//		
 		
-		
-	}
+//	}
 	
 	//works
 	@PostMapping("/login")
@@ -101,8 +103,8 @@ public class MasterController {
 
 	
 	// --testing
-	@DeleteMapping("/{bid}/{bid}")
-	public void deleteAccount(@PathVariable("bid") int bookId, @PathVariable("bid")int accountId) {
+	@DeleteMapping("/{bid}/{aid}")
+	public void deleteItem(@PathVariable("bid") int bookId, @PathVariable("aid")int accountId) {
 		cartService.removeFromCart(bookId, accountId);
 	}
 

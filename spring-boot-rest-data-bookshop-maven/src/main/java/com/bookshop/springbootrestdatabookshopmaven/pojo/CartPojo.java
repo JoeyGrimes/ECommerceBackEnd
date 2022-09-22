@@ -26,10 +26,9 @@ public class CartPojo {
 	private String bookTitle;
 	@NotNull
 	private int bookId;
-	@NotNull
-	private String date;
 	
-	private AccountPojo accountpojo;
-	private BookPojo bookpojo;
 	
+//	private AccountPojo accountpojo;
+//	private BookPojo bookpojo;
+//	
 }

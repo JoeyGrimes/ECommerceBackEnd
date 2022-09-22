@@ -10,7 +10,7 @@ import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 
 public interface CartService {
 
-public void addToCart(CartPojo cartpojo, int accountId);
+public void addToCart(int accountId, int bookId, int quantity);
 	
 	public void removeFromCart( int bookId , int accountId);
 	

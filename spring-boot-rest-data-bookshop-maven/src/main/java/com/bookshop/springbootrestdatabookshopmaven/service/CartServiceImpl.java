@@ -2,21 +2,28 @@ package com.bookshop.springbootrestdatabookshopmaven.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.bookshop.springbootrestdatabookshopmaven.dao.AccountDao;
+import com.bookshop.springbootrestdatabookshopmaven.dao.BookDao;
 import com.bookshop.springbootrestdatabookshopmaven.dao.CartDao;
 import com.bookshop.springbootrestdatabookshopmaven.dao.TransactionHistoryDao;
+import com.bookshop.springbootrestdatabookshopmaven.entity.AccountEntity;
 import com.bookshop.springbootrestdatabookshopmaven.entity.BookEntity;
 import com.bookshop.springbootrestdatabookshopmaven.entity.CartEntity;
 import com.bookshop.springbootrestdatabookshopmaven.entity.TransactionHistoryEntity;
+import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.CartPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 
 @Service
+
 public class CartServiceImpl implements CartService {
 
 	public CartServiceImpl() {
@@ -26,25 +33,35 @@ public class CartServiceImpl implements CartService {
 	CartDao cartDao;
 	@Autowired
 	TransactionHistoryDao transactionHistoryDao;
+	@Autowired 
+	BookDao bookDao;
+	@Autowired
+	AccountDao accountDao;
+	
 
 	@Override
-	public void addToCart(CartPojo cartpojo, int accountId, int bookId) {
-		//need to save the current book selected by ID, this also needs to be passed as paramter
-		//I might be able to do some cheeky logic where I copyproperties of the entities and save and flush
-		
-		
-		
-		//Another solution is the @join column by foreign key in the cart entity. If I can trim the extra unneccessary columns in my findAllBy then save and flush into the cart table
-		//I just need to see a better example she shows
-		
-		
-		
-		CartEntity newCartEntity = new CartEntity();
-		BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
-		cartDao.saveAndFlush(newCartEntity); // save the entity object in the db
-												// this will return the autogenretaed primary key
-		cartpojo.setAccountId(newCartEntity.getAccountId()); 
+	public void addToCart(int accountId, int bookId, int quantity) {
+		BookEntity book = bookDao.findByBookId(bookId);
+		BookPojo currentbook = new BookPojo();
+		BeanUtils.copyProperties(book, currentbook);
+		Optional<AccountEntity> account = Optional.ofNullable(accountDao.findByAccountId(accountId));
+		AccountPojo accountPojo = new AccountPojo();
+		if(account.isPresent()) {
+			BeanUtils.copyProperties(account.get(), accountPojo);
+			CartPojo cartpojo = new CartPojo();
+			cartpojo.setBookId(currentbook.getBookId());
+			cartpojo.setBookTitle(currentbook.getBookTitle());
+			cartpojo.setCost(currentbook.getCost());
+			cartpojo.setAccountId(accountPojo.getAccountId());
+			cartpojo.setQuantity(quantity);
+			CartEntity newCartEntity = new CartEntity();
+			BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
+			cartDao.saveAndFlush(newCartEntity); // save the entity object in the db
+													// this will return the autogenretaed primary key
 
+		}
+		
+	
 	}
 
 	@Override
@@ -71,7 +88,7 @@ public class CartServiceImpl implements CartService {
 		List<CartEntity> allCartEntity = cartDao.findAllByAccountId(accountId);
 		List<CartPojo> allCartItems = new ArrayList<CartPojo>();
 		
-		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId(), eachEntity.getDate())));
+		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
 	
 		return allCartItems;
 	}

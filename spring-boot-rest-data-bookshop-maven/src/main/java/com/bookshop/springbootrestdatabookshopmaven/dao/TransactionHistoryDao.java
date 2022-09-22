@@ -11,7 +11,7 @@ import com.bookshop.springbootrestdatabookshopmaven.entity.TransactionHistoryEnt
 @Repository
 public interface TransactionHistoryDao extends JpaRepository<TransactionHistoryEntity, Integer>{
 
-	@Query("SELECT * FROM transactions WHERE accountid =?1")
+	@Query(value = "SELECT * FROM transactionhistory WHERE accountid = ?1", nativeQuery = true)
 	public List<TransactionHistoryEntity> findAllByAccountId(int accountId);
 	
 	

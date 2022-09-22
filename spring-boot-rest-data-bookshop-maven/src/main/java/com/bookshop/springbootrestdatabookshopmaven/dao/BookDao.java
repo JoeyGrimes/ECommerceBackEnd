@@ -11,6 +11,9 @@ import com.bookshop.springbootrestdatabookshopmaven.entity.BookEntity;
 
 @Repository
 public interface BookDao extends JpaRepository<BookEntity, Integer>{
+	BookEntity findByBookId(int bookId);
+	
+	
 //SpringJPA will provide the implementation for the basic CRUD operations on the book table in database\
 //create read update delete
 	

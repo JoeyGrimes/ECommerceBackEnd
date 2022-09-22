@@ -15,10 +15,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="book")
 public class BookEntity {
@@ -36,6 +36,7 @@ public class BookEntity {
 	@Column(name = "cost")
 	 private int cost;
 	
+	@Column(name="bookimageurl")
 	 private String bookImageUrl;
 	
 	
