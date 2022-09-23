@@ -14,9 +14,11 @@ public interface CartDao extends JpaRepository<CartEntity, Integer> {
 	
 	
 	
+	public void deleteAllByAccountId(int accountId);
+	
+	
 	public void deleteByBookIdAndAccountId(int bookId, int accountId);
-
-	public void deleteByAccountId(int accountId);
+	
 	
 	public List<CartEntity> findAllByAccountId(int accountId);
 	

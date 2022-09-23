@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookshop.springbootrestdatabookshopmaven.model.AccountCheckoutInput;
 import com.bookshop.springbootrestdatabookshopmaven.model.CreateAccountInput;
 import com.bookshop.springbootrestdatabookshopmaven.model.CreateAccountOutput;
+import com.bookshop.springbootrestdatabookshopmaven.model.DeleteCartItemInput;
 import com.bookshop.springbootrestdatabookshopmaven.model.InputToCart;
 import com.bookshop.springbootrestdatabookshopmaven.model.LoginInput;
 import com.bookshop.springbootrestdatabookshopmaven.model.LoginOutput;
@@ -74,6 +76,12 @@ public class MasterController {
 		
 	}
 	
+	@PostMapping("/viewcurrentcart")
+	public List<CartPojo> viewCurrentCart(@Valid @RequestBody ViewAccountInput viewaccountinput) {
+		return cartService.viewCart(viewaccountinput.getAccountId());
+		
+	}
+	
 	@PostMapping("/transactionhistory")
 	public List<TransactionHistoryPojo> viewTransactionHistory(@Valid @RequestBody ViewAccountInput viewaccountinput){
 		return transactionHistoryService.viewTransactionHistory(viewaccountinput.getAccountId());
@@ -87,11 +95,11 @@ public class MasterController {
 		 
 	}
 	
-//	@PostMapping("{/checkout")
-//	public void Checkout() {
-//		
+	@PostMapping("/checkout")
+	public void CheckoutItems (@Valid @RequestBody AccountCheckoutInput accountCheckoutInput) {
+		cartService.Checkout(accountCheckoutInput.getAccountId());
 		
-//	}
+	}
 	
 	@PostMapping("/addToCart")
 	public CartPojo addToCart(@Valid @RequestBody InputToCart inputToCart) {
@@ -108,9 +116,9 @@ public class MasterController {
 
 	
 	// --testing
-	@DeleteMapping("/{bid}/{aid}")
-	public void deleteItem(@PathVariable("bid") int bookId, @PathVariable("aid")int accountId) {
-		cartService.removeFromCart(bookId, accountId);
+	@PostMapping("removeCartItem")
+	public void deleteItem(@Valid @RequestBody DeleteCartItemInput deleteCartItemInput) {
+		cartService.removeFromCart(deleteCartItemInput.getBookId(), deleteCartItemInput.getAccountId());
 	}
 
 }

@@ -76,12 +76,11 @@ public class CartServiceImpl implements CartService {
 	//saved to transaction table, then the cart delete by can be called
 	@Override
 	public void Checkout(int accountId) {
-		List<CartEntity> FetchedCartItems = cartDao.findAllByAccountId(accountId);
+		List<CartEntity> FetchedCartEntities = cartDao.findAllByAccountId(accountId);
 		List<TransactionHistoryEntity> transactions = new ArrayList<TransactionHistoryEntity>();
-		BeanUtils.copyProperties(FetchedCartItems, transactions);
+		BeanUtils.copyProperties(FetchedCartEntities, transactions);
 		transactionHistoryDao.saveAllAndFlush(transactions);
-		cartDao.deleteByAccountId(accountId);
-			
+		cartDao.deleteAllByAccountId(accountId);
 	}
 
 	@Override
