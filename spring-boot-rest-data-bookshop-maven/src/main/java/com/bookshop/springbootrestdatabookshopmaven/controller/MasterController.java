@@ -2,6 +2,7 @@ package com.bookshop.springbootrestdatabookshopmaven.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ import com.bookshop.springbootrestdatabookshopmaven.service.AccountService;
 import com.bookshop.springbootrestdatabookshopmaven.service.BookService;
 import com.bookshop.springbootrestdatabookshopmaven.service.CartService;
 import com.bookshop.springbootrestdatabookshopmaven.service.TransactionHistoryService;
-
+@Transactional
 @RestController
 @RequestMapping("api")
 public class MasterController {

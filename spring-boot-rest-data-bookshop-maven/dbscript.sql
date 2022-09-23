@@ -8,7 +8,7 @@ CREATE TABLE book (bookId INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 
 CREATE TABLE current_cart (orderNo INT NOT NULL  GENERATED ALWAYS AS IDENTITY, accountID INT, cost INT NOT NULL, quantity INT NOT NULL, bookTitle VARCHAR(100), bookId INT NOT NULL, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID));
 
-CREATE TABLE transactionhistory (orderNo INT, accountID INT, book VARCHAR(100), bookId INT NOT NULL, cost INT NOT NULL, quantity INT NOT NULL, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID));
+CREATE TABLE transactionhistory (transactionNo INT GENERATED ALWAYS AS IDENTITY, orderNo INT, accountID INT, book VARCHAR(100), bookId INT NOT NULL, cost INT NOT NULL, quantity INT NOT NULL,  "date" timestamp not null default CURRENT_TIMESTAMP, CONSTRAINT fk_customer FOREIGN KEY(accountID) REFERENCES customer_accounts(accountID));
 
 
 

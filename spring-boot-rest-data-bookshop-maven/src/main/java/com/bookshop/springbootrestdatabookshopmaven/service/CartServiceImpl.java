@@ -77,9 +77,15 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void Checkout(int accountId) {
 		List<CartEntity> FetchedCartEntities = cartDao.findAllByAccountId(accountId);
-		List<TransactionHistoryEntity> transactions = new ArrayList<TransactionHistoryEntity>();
-		BeanUtils.copyProperties(FetchedCartEntities, transactions);
-		transactionHistoryDao.saveAllAndFlush(transactions);
+		List<TransactionHistoryEntity> transactionsToCopy = new ArrayList<TransactionHistoryEntity>();
+		for (CartEntity cartEntity : FetchedCartEntities) {
+			  TransactionHistoryEntity transaction = new TransactionHistoryEntity();
+			  BeanUtils.copyProperties(cartEntity, transaction);
+			  transactionsToCopy.add(transaction);
+			}
+		transactionHistoryDao.saveAllAndFlush(transactionsToCopy);
+		
+		
 		cartDao.deleteAllByAccountId(accountId);
 	}
 

@@ -18,6 +18,9 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class TransactionHistoryPojo {
 	@NotNull
+	private int transactionNo;
+	
+	@NotNull
 	private int orderNo;
 	
 	private int accountId;
@@ -29,7 +32,8 @@ public class TransactionHistoryPojo {
 	private String bookTitle;
 	@NotNull
 	private int bookId;
-
+	
+	
 	
 
 }
