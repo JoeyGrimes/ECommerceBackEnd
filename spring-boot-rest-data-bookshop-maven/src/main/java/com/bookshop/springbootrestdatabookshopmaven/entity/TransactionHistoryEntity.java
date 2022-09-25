@@ -1,5 +1,9 @@
 package com.bookshop.springbootrestdatabookshopmaven.entity;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +44,8 @@ public class TransactionHistoryEntity {
 	@Column(name = "quantity")
 	private int quantity;
 	
+	@Column(name = "date")
+	private LocalDateTime date;
 	
 	
 	

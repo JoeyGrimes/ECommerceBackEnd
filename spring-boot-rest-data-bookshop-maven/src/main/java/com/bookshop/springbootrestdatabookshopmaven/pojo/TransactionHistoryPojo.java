@@ -1,5 +1,9 @@
 package com.bookshop.springbootrestdatabookshopmaven.pojo;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -33,7 +37,7 @@ public class TransactionHistoryPojo {
 	@NotNull
 	private int bookId;
 	
-	
+	private LocalDateTime date;
 	
 
 }
