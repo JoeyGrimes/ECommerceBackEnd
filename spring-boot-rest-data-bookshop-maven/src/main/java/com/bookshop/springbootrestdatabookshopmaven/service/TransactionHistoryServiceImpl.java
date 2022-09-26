@@ -31,7 +31,7 @@ public class TransactionHistoryServiceImpl implements TransactionHistoryService 
 			List<TransactionHistoryEntity> allTransactionsEntity = transactionHistoryDao.findAllByAccountId(accountid);
 			List<TransactionHistoryPojo> allTransactionsPojo = new ArrayList<TransactionHistoryPojo>();
 			
-			allTransactionsEntity.forEach((eachEntity)->allTransactionsPojo.add(new TransactionHistoryPojo(eachEntity.getTransactionNo(), eachEntity.getOrderNo(),eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookid(), eachEntity.getDate())));
+			allTransactionsEntity.forEach((eachEntity)->allTransactionsPojo.add(new TransactionHistoryPojo(eachEntity.getTransactionNo(), eachEntity.getOrderNo(),eachEntity.getAccountId(), eachEntity.getBookCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId(), eachEntity.getDate())));
 		
 			return allTransactionsPojo;
 		}

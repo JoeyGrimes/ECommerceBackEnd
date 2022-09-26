@@ -35,19 +35,17 @@ public class TransactionHistoryEntity {
 	private String bookTitle;
 	
 	@Column(name = "bookid")
-	private int bookid;
+	private int bookId;
 	
 	
 	@Column(name = "cost")
-	private int cost;
+	private int bookCost;
 
 	@Column(name = "quantity")
 	private int quantity;
 	
 	@Column(name = "date")
-	private LocalDateTime date;
-	
-	
+	private LocalDateTime date = LocalDateTime.now();
 	
 	}
 

@@ -29,7 +29,7 @@ public class TransactionHistoryPojo {
 	
 	private int accountId;
 	@NotNull
-	private int cost;
+	private int bookCost;
 	@NotNull
 	private int quantity;
 	@NotNull
