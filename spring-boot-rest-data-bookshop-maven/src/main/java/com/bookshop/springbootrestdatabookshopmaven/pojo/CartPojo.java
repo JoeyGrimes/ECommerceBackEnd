@@ -22,7 +22,7 @@ public class CartPojo {
 	
 	private int accountId;
 	@NotNull
-	private int cost;
+	private int bookCost;
 	@NotNull
 	private int quantity;
 	@NotNull

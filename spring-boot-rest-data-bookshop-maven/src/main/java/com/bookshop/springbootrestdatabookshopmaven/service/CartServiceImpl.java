@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService {
 			//BeanUtils.copyProperties(account, copiedAccount);
 			cartpojo.setBookId(currentbook.getBookId());
 			cartpojo.setBookTitle(currentbook.getBookTitle());
-			cartpojo.setCost(currentbook.getBookCost());
+			cartpojo.setBookCost(currentbook.getBookCost());
 			cartpojo.setAccountId(accountId);
 			cartpojo.setQuantity(quantity);
 			CartEntity newCartEntity = new CartEntity();
@@ -94,7 +94,7 @@ public class CartServiceImpl implements CartService {
 		List<CartEntity> allCartEntity = cartDao.findAllByAccountId(accountId);
 		List<CartPojo> allCartItems = new ArrayList<CartPojo>();
 		
-		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getOrderNo(),eachEntity.getAccountId(), eachEntity.getCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
+		allCartEntity.forEach((eachEntity)->allCartItems.add(new CartPojo(eachEntity.getOrderNo(),eachEntity.getAccountId(), eachEntity.getBookCost(), eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
 	
 		return allCartItems;
 	}

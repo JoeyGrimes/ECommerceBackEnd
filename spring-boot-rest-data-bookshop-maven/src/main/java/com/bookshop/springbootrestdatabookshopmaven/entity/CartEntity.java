@@ -34,7 +34,7 @@ public class CartEntity {
 	private int accountId;
 
 	@Column(name = "cost")
-	private int cost;
+	private int bookCost;
 
 	@Column(name = "quantity")
 	private int quantity;

@@ -37,7 +37,7 @@ public class TransactionHistoryPojo {
 	@NotNull
 	private int bookId;
 	
-	private LocalDateTime date;
+	private LocalDateTime date = LocalDateTime.now();
 	
 
 }
