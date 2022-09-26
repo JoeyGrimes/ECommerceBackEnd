@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService{
 		List<BookEntity> allBooksEntity = bookDao.findAll();
 		List<BookPojo> allBooksPojo = new ArrayList<BookPojo>();
 		
-		allBooksEntity.forEach((eachEntity)->allBooksPojo.add(new BookPojo(eachEntity.getBookId(), eachEntity.getBookTitle(), eachEntity.getBookAuthor(), eachEntity.getCost(), eachEntity.getBookImageUrl())));
+		allBooksEntity.forEach((eachEntity)->allBooksPojo.add(new BookPojo(eachEntity.getBookId(), eachEntity.getBookTitle(), eachEntity.getBookAuthor(), eachEntity.getBookCost(), eachEntity.getBookImageUrl())));
 		
 		return allBooksPojo;
 	}

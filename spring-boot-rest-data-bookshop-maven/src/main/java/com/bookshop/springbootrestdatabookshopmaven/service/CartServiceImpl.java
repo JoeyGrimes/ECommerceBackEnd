@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService {
 			//BeanUtils.copyProperties(account, copiedAccount);
 			cartpojo.setBookId(currentbook.getBookId());
 			cartpojo.setBookTitle(currentbook.getBookTitle());
-			cartpojo.setCost(currentbook.getCost());
+			cartpojo.setCost(currentbook.getBookCost());
 			cartpojo.setAccountId(accountId);
 			cartpojo.setQuantity(quantity);
 			CartEntity newCartEntity = new CartEntity();

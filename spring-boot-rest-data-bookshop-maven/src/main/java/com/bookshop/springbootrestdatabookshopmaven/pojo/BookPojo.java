@@ -25,7 +25,7 @@ public class BookPojo {
 	 @NotNull
 	 private String bookAuthor;
 	 @NotNull
-	 private int cost;
+	 private int bookCost;
 	 @NotNull
 	 private String bookImageUrl;
 	

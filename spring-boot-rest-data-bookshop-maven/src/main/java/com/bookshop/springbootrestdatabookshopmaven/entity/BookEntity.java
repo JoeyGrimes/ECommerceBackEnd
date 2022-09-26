@@ -34,7 +34,7 @@ public class BookEntity {
 	 private String bookAuthor;
 	
 	@Column(name = "cost")
-	 private int cost;
+	 private int bookCost;
 	
 	@Column(name="bookimageurl")
 	 private String bookImageUrl;
