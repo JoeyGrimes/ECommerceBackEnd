@@ -18,7 +18,7 @@ public interface AccountService {
 	
 	public  AccountPojo viewAccount(int accountid);
 	
-	public int login(String email, String password);
+	public AccountPojo login(String email, String password);
 	
 	public AccountPojo register(AccountPojo accountpojo);
 

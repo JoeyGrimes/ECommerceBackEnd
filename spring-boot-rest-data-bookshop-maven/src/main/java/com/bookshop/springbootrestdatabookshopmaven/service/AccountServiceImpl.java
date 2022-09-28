@@ -47,19 +47,25 @@ public class AccountServiceImpl implements AccountService {
 		if(account.isPresent()) {
 		BeanUtils.copyProperties(account.get(), fetchedAccountPojo);
 		}
-		return fetchedAccountPojo;
-		
-		
+		return fetchedAccountPojo;	
 	}
 	
 	
 	
-	public int login(String email, String password) {
-	AccountEntity accountentity = accountDao.findByEmailAndPassword(email, password);
-	AccountPojo accountpojo = new AccountPojo();
-	BeanUtils.copyProperties(accountentity, accountpojo);
-	int id = accountpojo.getAccountId();
-	return id;
+//	public int login(String email, String password) {
+//	AccountEntity accountentity = accountDao.findByEmailAndPassword(email, password);
+//	AccountPojo accountpojo = new AccountPojo();
+//	BeanUtils.copyProperties(accountentity, accountpojo);
+//	int id = accountpojo.getAccountId();
+//	return id;
+	
+	public AccountPojo login(String email, String password) {
+		AccountEntity newAccountEntity = accountDao.findByEmailAndPassword(email, password);
+		AccountPojo accountpojo = new AccountPojo();
+		BeanUtils.copyProperties(newAccountEntity, accountpojo ); // copying the book pojo into a book entity
+		
+		return accountpojo;
+		
 		
 	}
 	

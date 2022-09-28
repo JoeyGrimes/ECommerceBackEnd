@@ -109,10 +109,10 @@ public class MasterController {
 	
 	//works
 	@PostMapping("/login")
-	public LoginOutput login(@Valid @RequestBody LoginInput logininput) {
+	public AccountPojo login(@Valid @RequestBody LoginInput logininput) {
 		
-		int accountid = accountService.login(logininput.getEmail(), logininput.getPassword());
-		return new LoginOutput(accountid);
+		AccountPojo accountpojo = accountService.login(logininput.getEmail(), logininput.getPassword());
+		return accountpojo;
 	}
 
 	
