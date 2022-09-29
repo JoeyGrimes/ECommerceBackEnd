@@ -1,5 +1,8 @@
 package com.bookshop.springbootrestdatabookshopmaven.model;
 
+import lombok.ToString;
+
+@ToString
 public class LoginInput {
 
 	private String email;

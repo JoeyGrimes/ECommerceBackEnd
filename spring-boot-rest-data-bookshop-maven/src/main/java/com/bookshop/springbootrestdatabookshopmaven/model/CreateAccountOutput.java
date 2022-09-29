@@ -2,6 +2,8 @@ package com.bookshop.springbootrestdatabookshopmaven.model;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+@Data
 public class CreateAccountOutput {
 	private int accountId;
 	

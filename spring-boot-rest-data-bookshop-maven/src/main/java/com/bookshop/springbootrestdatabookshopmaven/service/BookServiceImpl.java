@@ -43,20 +43,4 @@ public class BookServiceImpl implements BookService{
 		return allBooksPojo;
 	}
 
-	
-
-	@Override
-	public BookPojo getABook(int bookId){
-		//return bookDao.getABook(bookId);
-		Optional<BookEntity> optionalBookEntity = bookDao.findById(bookId);
-		BookPojo fetchedBookPojo = null;
-		if(optionalBookEntity.isPresent()) {
-			fetchedBookPojo = new BookPojo();;
-			BeanUtils.copyProperties(optionalBookEntity.get(), fetchedBookPojo);
-		}
-		return fetchedBookPojo;
-	}
-
-
-
 }

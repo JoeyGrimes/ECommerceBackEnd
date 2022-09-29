@@ -1,6 +1,9 @@
 
 package com.bookshop.springbootrestdatabookshopmaven.model;
 
+import lombok.ToString;
+
+@ToString
 public class InputToCart {
 	private int accountId;
 	private int bookId;

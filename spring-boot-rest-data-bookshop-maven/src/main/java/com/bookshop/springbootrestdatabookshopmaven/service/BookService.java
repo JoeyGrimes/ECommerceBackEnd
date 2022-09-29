@@ -16,8 +16,4 @@ public interface BookService   {
 	// fetches all the books - Read
 	List<BookPojo> getAllBooks();
 	
-	
-	// fetches a book - Read
-	BookPojo getABook(int bookId);
-	
 }
