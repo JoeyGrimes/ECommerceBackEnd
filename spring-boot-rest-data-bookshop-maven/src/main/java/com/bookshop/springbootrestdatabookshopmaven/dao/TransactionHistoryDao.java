@@ -14,5 +14,6 @@ public interface TransactionHistoryDao extends JpaRepository<TransactionHistoryE
 	
 	public List<TransactionHistoryEntity> findAllByAccountId(int accountId);
 	
-	
+	@Query(value = "SELECT max(orderNo) FROM transactionhistory", nativeQuery = true)
+	int getMaxOrderNo();
 }

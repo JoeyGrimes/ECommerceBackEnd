@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -78,6 +79,13 @@ public class CartServiceImpl implements CartService {
 	// saved to transaction table, then the cart delete by can be called
 	@Override
 	public void Checkout(int accountId) {
+		int highestTransactionOrderNo;
+		try {
+			highestTransactionOrderNo = transactionHistoryDao.getMaxOrderNo();
+			highestTransactionOrderNo++;
+		} catch (AopInvocationException e) {
+			highestTransactionOrderNo = 1;
+		}
 
 		List<CartEntity> FetchedCartEntities = cartDao.findAllByAccountId(accountId);
 
@@ -86,7 +94,7 @@ public class CartServiceImpl implements CartService {
 			TransactionHistoryEntity transaction = new TransactionHistoryEntity();
 
 			BeanUtils.copyProperties(cartEntity, transaction);
-
+			transaction.setOrderNo(highestTransactionOrderNo);
 			transactionsToCopy.add(transaction);
 		}
 		transactionHistoryDao.saveAllAndFlush(transactionsToCopy);
