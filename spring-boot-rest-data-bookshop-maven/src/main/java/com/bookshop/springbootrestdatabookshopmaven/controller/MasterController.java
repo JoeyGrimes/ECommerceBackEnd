@@ -133,7 +133,7 @@ public class MasterController {
 
 	
 	// --testing
-	@PostMapping("removeCartItem")
+	@PostMapping("/removeCartItem")
 	public void deleteItem(@Valid @RequestBody DeleteCartItemInput deleteCartItemInput) {
 		log.info("entered deleteItem" + deleteCartItemInput);
 		log.info("exited deleteItem");

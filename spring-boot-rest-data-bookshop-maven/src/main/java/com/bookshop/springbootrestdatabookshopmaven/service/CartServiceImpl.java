@@ -24,12 +24,15 @@ import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.CartPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.apachecommons.CommonsLog;
+
+@CommonsLog
 @Service
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class CartServiceImpl implements CartService {
-
-	public CartServiceImpl() {
-	}
 
 	@Autowired
 	CartDao cartDao;
@@ -75,12 +78,15 @@ public class CartServiceImpl implements CartService {
 	// saved to transaction table, then the cart delete by can be called
 	@Override
 	public void Checkout(int accountId) {
+
 		List<CartEntity> FetchedCartEntities = cartDao.findAllByAccountId(accountId);
 
 		List<TransactionHistoryEntity> transactionsToCopy = new ArrayList<TransactionHistoryEntity>();
 		for (CartEntity cartEntity : FetchedCartEntities) {
 			TransactionHistoryEntity transaction = new TransactionHistoryEntity();
+
 			BeanUtils.copyProperties(cartEntity, transaction);
+
 			transactionsToCopy.add(transaction);
 		}
 		transactionHistoryDao.saveAllAndFlush(transactionsToCopy);

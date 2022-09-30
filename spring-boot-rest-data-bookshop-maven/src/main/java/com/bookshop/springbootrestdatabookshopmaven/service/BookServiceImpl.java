@@ -11,11 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.bookshop.springbootrestdatabookshopmaven.dao.AccountDao;
 import com.bookshop.springbootrestdatabookshopmaven.dao.BookDao;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.apachecommons.CommonsLog;
+
 import com.bookshop.springbootrestdatabookshopmaven.entity.BookEntity;
-
-
+@CommonsLog
+@AllArgsConstructor
+@NoArgsConstructor
 @Service // this tells the spring framenwork that this class is a bean
 public class BookServiceImpl implements BookService{
 
@@ -26,13 +33,6 @@ public class BookServiceImpl implements BookService{
 	BookDao bookDao; // this is the preferred way as the class is abstracted through the interface reference variable
 	
 		
-	public BookServiceImpl() {
-		// the interface reference variable points to the jdbc implementation class
-		// this line is no longer needed after we have autowired bookDao
-		// bookDao = new BookDaoJdbcImpl();
-	}
-
-	// the methods in my service layer don't do anything much, they just call the respective dao methods
 	@Override
 	public List<BookPojo> getAllBooks(){
 		List<BookEntity> allBooksEntity = bookDao.findAll();

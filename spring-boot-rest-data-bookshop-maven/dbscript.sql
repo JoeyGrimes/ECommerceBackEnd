@@ -22,4 +22,4 @@ INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('Raise High
 INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('IT', 'Stephen King' , 30, '');
 INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Old Man and The Sea', 'Ernest Hemingway', 25, '');
 INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES  ('Into The Wild' , 'Jon Krakauer' , 35 , '');
- 
+  

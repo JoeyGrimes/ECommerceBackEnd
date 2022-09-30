@@ -17,12 +17,18 @@ import com.bookshop.springbootrestdatabookshopmaven.entity.TransactionHistoryEnt
 import com.bookshop.springbootrestdatabookshopmaven.pojo.AccountPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.TransactionHistoryPojo;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.apachecommons.CommonsLog;
+@CommonsLog
+@AllArgsConstructor
+@NoArgsConstructor
 @Service
 
 public class TransactionHistoryServiceImpl implements TransactionHistoryService {
 
-	public TransactionHistoryServiceImpl() {
-		}
+	
 	@Autowired
 	TransactionHistoryDao transactionHistoryDao;
 	

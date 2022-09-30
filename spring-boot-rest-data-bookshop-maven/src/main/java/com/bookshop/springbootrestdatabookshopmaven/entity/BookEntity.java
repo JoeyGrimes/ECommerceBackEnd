@@ -14,37 +14,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class BookEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//Id is the primary auto generated key
-	@Column(name ="bookid")
-		private int bookId;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Id is the primary auto generated key
+	@Column(name = "bookid")
+	private int bookId;
+
 	@Column(name = "booktitle")
-	 private String bookTitle;
-	
+	private String bookTitle;
+
 	@Column(name = "bookauthor")
-	 private String bookAuthor;
-	
+	private String bookAuthor;
+
 	@Column(name = "cost")
-	 private int bookCost;
-	
-	@Column(name="bookimageurl")
-	 private String bookImageUrl;
-	
-	
-	
-	
-	
+	private int bookCost;
+
+	@Column(name = "bookimageurl")
+	private String bookImageUrl;
+
 }
-	//default constructor
-	//parametrized constructor
-	//getters and setters
-	//to string
+// default constructor
+// parametrized constructor
+// getters and setters
+// to string
