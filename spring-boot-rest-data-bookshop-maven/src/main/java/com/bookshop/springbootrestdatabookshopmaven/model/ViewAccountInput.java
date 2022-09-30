@@ -9,7 +9,7 @@ public class ViewAccountInput {
 
 	public ViewAccountInput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ViewAccountInput(int accountId) {

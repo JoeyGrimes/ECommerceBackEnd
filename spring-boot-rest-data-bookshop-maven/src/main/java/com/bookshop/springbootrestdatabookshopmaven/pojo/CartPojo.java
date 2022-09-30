@@ -30,8 +30,5 @@ public class CartPojo {
 	@NotNull
 	private int bookId;
 	
-	
-//	private AccountPojo accountpojo;
-//	private BookPojo bookpojo;
-//	
+
 }

@@ -10,7 +10,7 @@ public class InputToCart {
 	private int quantity;
 	public InputToCart() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public InputToCart(int accountId, int bookId, int quantity) {
 		super();

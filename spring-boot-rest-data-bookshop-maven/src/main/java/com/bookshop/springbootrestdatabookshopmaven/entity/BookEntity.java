@@ -39,7 +39,3 @@ public class BookEntity {
 	private String bookImageUrl;
 
 }
-// default constructor
-// parametrized constructor
-// getters and setters
-// to string

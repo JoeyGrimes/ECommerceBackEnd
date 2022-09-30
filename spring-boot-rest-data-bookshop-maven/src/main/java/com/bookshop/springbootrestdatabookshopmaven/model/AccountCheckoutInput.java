@@ -8,7 +8,7 @@ public class AccountCheckoutInput {
 
 	public AccountCheckoutInput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public AccountCheckoutInput(int accountId) {

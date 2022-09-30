@@ -35,6 +35,7 @@ import com.bookshop.springbootrestdatabookshopmaven.service.CartService;
 import com.bookshop.springbootrestdatabookshopmaven.service.TransactionHistoryService;
 
 import lombok.extern.apachecommons.CommonsLog;
+
 @Transactional
 @RestController
 @CommonsLog
@@ -42,89 +43,73 @@ import lombok.extern.apachecommons.CommonsLog;
 @CrossOrigin
 public class MasterController {
 
-	@Autowired // we are telling springframework to search for a class that implemenets this
-				// interface "bookservice"
-	// and make an object out of it in this class
-	// the class implementation has to be annotated with @component in order to be a
-	// piece of this process
+	@Autowired
 	BookService bookService;
 	@Autowired
 	AccountService accountService;
-	@Autowired 
+	@Autowired
 	CartService cartService;
 	@Autowired
 	TransactionHistoryService transactionHistoryService;
+
 	
-	
-	// Read -getAllBooks - @GetMapping
-	// http://localhost:6666/api/books - get
+	// http://localhost:3333/api/books
 	@GetMapping("/books")
 	public List<BookPojo> getAllBooks() {
 		log.info("entered getAllBooks");
-		// call the corresponding getAllBooks method of the service layer
-		// for that we need to create an object of the service layer
-		// but with spring framework we can tell the framework to create the object for
-		// us
 		log.info("exited getAllBooks");
 		return bookService.getAllBooks();
 
 	}
 
-	// Read - an Account - @GetMapping
-	// http://localhost:6666/api/books/14
-	// ^ bookId
-
 	
-	//works
 	@PostMapping("/viewaccount")
-	public AccountPojo viewAccount (@Valid @RequestBody ViewAccountInput viewaccountinput) {
+	public AccountPojo viewAccount(@Valid @RequestBody ViewAccountInput viewaccountinput) {
 		log.info("entered viewaccount:" + viewaccountinput);
 		log.info("exited viewaccount");
 		return accountService.viewAccount(viewaccountinput.getAccountId());
-		
+
 	}
-	
+
 	@PostMapping("/viewcurrentcart")
 	public List<CartPojo> viewCurrentCart(@Valid @RequestBody ViewAccountInput viewaccountinput) {
 		log.info("entered viewcurrentcart" + viewaccountinput);
 		log.info("exited viewaccount");
 		return cartService.viewCart(viewaccountinput.getAccountId());
-		
-	}
-	
-	@PostMapping("/transactionhistory")
-	public List<TransactionHistoryPojo> viewTransactionHistory(@Valid @RequestBody ViewAccountInput viewaccountinput){
-		log.info("entered viewatransactionhistory" + viewaccountinput);
-		log.info("entered viewatransactionhistory");
-		
-		return transactionHistoryService.viewTransactionHistory(viewaccountinput.getAccountId());
-		
+
 	}
 
-	// --testing
+	@PostMapping("/transactionhistory")
+	public List<TransactionHistoryPojo> viewTransactionHistory(@Valid @RequestBody ViewAccountInput viewaccountinput) {
+		log.info("entered viewatransactionhistory" + viewaccountinput);
+		log.info("entered viewatransactionhistory");
+
+		return transactionHistoryService.viewTransactionHistory(viewaccountinput.getAccountId());
+
+	}
+
 	@PostMapping("")
 	public AccountPojo registerAccount(@Valid @RequestBody AccountPojo newaccount) {
 		log.info("entered registerAccount" + newaccount);
 		log.info("exited registerAccount");
-		 return accountService.register(newaccount);
-		 
+		return accountService.register(newaccount);
+
 	}
-	
+
 	@PostMapping("/checkout")
-	public void CheckoutItems (@Valid @RequestBody AccountCheckoutInput accountCheckoutInput) {
+	public void CheckoutItems(@Valid @RequestBody AccountCheckoutInput accountCheckoutInput) {
 		log.info("entered CheckoutItems" + accountCheckoutInput);
 		cartService.Checkout(accountCheckoutInput.getAccountId());
-		
+
 	}
-	
+
 	@PostMapping("/addToCart")
 	public CartPojo addToCart(@Valid @RequestBody InputToCart inputToCart) {
 		log.info("entered addToCart" + inputToCart);
 		log.info("exited addToCart");
 		return cartService.addToCart(inputToCart.getAccountId(), inputToCart.getBookId(), inputToCart.getQuantity());
 	}
-	
-	//works
+
 	@PostMapping("/login")
 	public AccountPojo login(@Valid @RequestBody LoginInput logininput) {
 		log.info("entered login" + logininput);
@@ -133,8 +118,6 @@ public class MasterController {
 		return accountpojo;
 	}
 
-	
-	// --testing
 	@PostMapping("/removeCartItem")
 	public void deleteItem(@Valid @RequestBody DeleteCartItemInput deleteCartItemInput) {
 		log.info("entered deleteItem" + deleteCartItemInput);
@@ -143,4 +126,3 @@ public class MasterController {
 	}
 
 }
-

@@ -9,7 +9,7 @@ public class LoginInput {
 	private String password;
 	public LoginInput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public LoginInput(String email, String password) {
 		super();

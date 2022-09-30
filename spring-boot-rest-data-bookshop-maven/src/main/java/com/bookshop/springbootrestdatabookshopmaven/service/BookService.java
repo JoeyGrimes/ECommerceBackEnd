@@ -8,12 +8,6 @@ import org.springframework.stereotype.Service;
 import com.bookshop.springbootrestdatabookshopmaven.pojo.BookPojo;
 
 public interface BookService   {
-	// C - Create
-	// R - Read
-	// U - Update
-	// D - Delete
-	
-	// fetches all the books - Read
 	List<BookPojo> getAllBooks();
 	
 }

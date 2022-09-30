@@ -23,14 +23,14 @@ import com.bookshop.springbootrestdatabookshopmaven.entity.BookEntity;
 @CommonsLog
 @AllArgsConstructor
 @NoArgsConstructor
-@Service // this tells the spring framenwork that this class is a bean
+@Service
 public class BookServiceImpl implements BookService{
 
 	
 	
-	// BookDao interface reference variable
+
 	@Autowired
-	BookDao bookDao; // this is the preferred way as the class is abstracted through the interface reference variable
+	BookDao bookDao; 
 	
 		
 	@Override

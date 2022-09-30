@@ -8,7 +8,7 @@ public class DeleteCartItemInput {
 	private int accountId;
 	public DeleteCartItemInput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public DeleteCartItemInput(int bookId, int accountId) {
 		super();

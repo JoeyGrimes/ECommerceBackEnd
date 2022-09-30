@@ -53,18 +53,15 @@ public class CartServiceImpl implements CartService {
 		CartPojo cartpojo = new CartPojo();
 		BookPojo currentbook = new BookPojo();
 		BeanUtils.copyProperties(book, currentbook);
-		// AccountEntity account = accountDao.findByAccountId(accountId);
-		// AccountPojo copiedAccount = new AccountPojo();
-		// BeanUtils.copyProperties(account, copiedAccount);
 		cartpojo.setBookId(currentbook.getBookId());
 		cartpojo.setBookTitle(currentbook.getBookTitle());
 		cartpojo.setBookCost(currentbook.getBookCost());
 		cartpojo.setAccountId(accountId);
 		cartpojo.setQuantity(quantity);
 		CartEntity newCartEntity = new CartEntity();
-		BeanUtils.copyProperties(cartpojo, newCartEntity); // copying the book pojo into a book entity
-		cartDao.saveAndFlush(newCartEntity); // save the entity object in the db
-												// this will return the autogenretaed primary key
+		BeanUtils.copyProperties(cartpojo, newCartEntity); 
+		cartDao.saveAndFlush(newCartEntity); 
+												
 		return cartpojo;
 	}
 
@@ -74,9 +71,6 @@ public class CartServiceImpl implements CartService {
 		cartDao.deleteByBookIdAndAccountId(bookId, accountId);
 	}
 
-	// This needs to be edited, I need to insert each individual item on the cart
-	// into a LIST. a list of Pojos needs to be pulled,
-	// saved to transaction table, then the cart delete by can be called
 	@Override
 	public void Checkout(int accountId) {
 		int highestTransactionOrderNo;

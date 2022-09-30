@@ -17,7 +17,7 @@ public class CreateAccountOutput {
 
 	public CreateAccountOutput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CreateAccountOutput(int accountId, String email, String password, String firstname, String lastname) {

@@ -8,7 +8,7 @@ public class LoginOutput {
 
 	public LoginOutput() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public LoginOutput(int accountid) {
