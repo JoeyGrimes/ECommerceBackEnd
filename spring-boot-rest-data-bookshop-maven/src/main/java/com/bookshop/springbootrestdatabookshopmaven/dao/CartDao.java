@@ -18,6 +18,4 @@ public interface CartDao extends JpaRepository<CartEntity, Integer> {
 
 	public List<CartEntity> findAllByAccountId(int accountId);
 
-	public int FindOrderNoByAccountIdAndOrderNo(int accountId, int orderNo);
-
 }
