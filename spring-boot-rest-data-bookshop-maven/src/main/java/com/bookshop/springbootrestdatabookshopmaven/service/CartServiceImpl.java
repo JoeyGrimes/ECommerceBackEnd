@@ -59,9 +59,9 @@ public class CartServiceImpl implements CartService {
 		cartpojo.setAccountId(accountId);
 		cartpojo.setQuantity(quantity);
 		CartEntity newCartEntity = new CartEntity();
-		BeanUtils.copyProperties(cartpojo, newCartEntity); 
-		cartDao.saveAndFlush(newCartEntity); 
-												
+		BeanUtils.copyProperties(cartpojo, newCartEntity);
+		cartDao.saveAndFlush(newCartEntity);
+
 		return cartpojo;
 	}
 
@@ -106,6 +106,6 @@ public class CartServiceImpl implements CartService {
 						eachEntity.getQuantity(), eachEntity.getBookTitle(), eachEntity.getBookId())));
 
 		return allCartItems;
-	}
 
+	}
 }

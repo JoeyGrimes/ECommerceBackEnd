@@ -12,14 +12,14 @@ CREATE TABLE transactionhistory (transactionNo INT GENERATED ALWAYS AS IDENTITY,
 
 
 
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Catcher in The Rye', 'J.D Salinger', 35, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Unchangeable Spots of Leopards', 'Kristopher Jansma', 25, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Sun Also Rises', 'Ernest Hemingway', 40, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Stand', 'Stephen King', 20, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Screwtape Letters', 'C.S Lewis', 30, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Alchemist', 'Paulo Coelho', 25, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('Raise High The Roofbeams Carpenter' , 'J.D Salinger', 25, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('IT', 'Stephen King' , 30, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Old Man and The Sea', 'Ernest Hemingway', 25, '');
-INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES  ('Into The Wild' , 'Jon Krakauer' , 35 , '');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Catcher in The Rye', 'J.D Salinger', 35, 'https://images-na.ssl-images-amazon.com/images/I/51nXxz0taHL._SX401_BO1,204,203,200_.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Unchangeable Spots of Leopards', 'Kristopher Jansma', 25, 'https://m.media-amazon.com/images/I/51zcPBoGlLL._AC_SY780_.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Sun Also Rises', 'Ernest Hemingway', 40, 'https://images-na.ssl-images-amazon.com/images/I/71O7XjXaMhL.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Stand', 'Stephen King', 20, 'https://images-na.ssl-images-amazon.com/images/I/71H4HgEefcL.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Screwtape Letters', 'C.S Lewis', 30, 'https://images-na.ssl-images-amazon.com/images/I/61TV0RxJOOL.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Alchemist', 'Paulo Coelho', 25, 'https://images-na.ssl-images-amazon.com/images/I/51NRkX2bPbL.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('Raise High The Roofbeams Carpenter' , 'J.D Salinger', 25, 'https://images-na.ssl-images-amazon.com/images/I/41Ho4yQjGmL._SX319_BO1,204,203,200_.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('IT', 'Stephen King' , 30, 'https://images-na.ssl-images-amazon.com/images/I/71tFhdcC0XL.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES ('The Old Man and The Sea', 'Ernest Hemingway', 25, 'https://images-na.ssl-images-amazon.com/images/I/6156MReb60L.jpg');
+INSERT INTO book (bookTitle, bookAuthor, cost, bookImageUrl) VALUES  ('Into The Wild' , 'Jon Krakauer' , 35 , 'https://images-na.ssl-images-amazon.com/images/I/811k9HNhaiL.jpg');
   
